@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('Checkout SCM') {
           steps {
-            git(url: 'https://github.com/Narendrakaduru/SKRcollege.git', credentialsId: 'GitAuth', branch: 'main')
+            git(url: 'https://github.com/harish505/skr.git', credentialsId: 'GitAuth', branch: 'main')
           }
         }
 
@@ -63,9 +63,9 @@ pipeline {
 
     stage('Push to DockerHub') {
       steps {
-        sh 'docker tag skr-college-img:latest narendra8686/skr-college-img:latest'
+        sh 'docker tag skr-college-img:latest harishlankepalli555/skr-college-img:latest'
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        sh 'docker push narendra8686/skr-college-img:latest'
+        sh 'docker push harishlankepalli555/skr-college-img:latest'
       }
     }
 
@@ -75,7 +75,7 @@ pipeline {
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('DockerAuth')
-    TESTER = 'Nani'
+    TESTER = 'Hari'
     BUILD_ID = '1.0.0'
   }
 }
